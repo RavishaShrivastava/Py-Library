@@ -1,78 +1,113 @@
+#importing numpy
 import numpy as np
-def simple_cal():
-  print("Welcome to simple calculator")
+
+def other_funtion():
+  print('Welcome!!')
+  
   while True:
-    print('1: Add 2 Arrays')
-    print('2: sub 2 Arrays')
-    print('3: div Array')
-    print('4: mod Array')
-    print('5: mul Array')
-    print('6: Min Elem in Array')
-    print('7: Max Ele in Array')
-    print('8: squart root')
-    print('9: Power')
-    print('10: reciprocal')
-    print('11: sin and cos')
-    print('12: Exit the cal')
-    c = input('Enter the number of your choice: ')
-    if c == '1' or c=='2' or c=='3' or c=='4' or c=='5':
-      row = int(input('Enter row: '))
-      col = int(input('Enter col: '))
+    
+    #below are the functions which calculator can perform 
+    print('1: Create Zeros in matrix')
+    print('2: create ones in matrix')
+    print('3: inputs in Matrix by range')
+    print('4: Identity Matrix')
+    print('5: Randomzzz')
+    print('6: type and dimension of matrix given')
+    print('7: Reshape the matrix')
+    print('8: indexing and slicing')
+    print('9. Unique and shuffle')
+    print('10: Exit')
+
+    #taking input
+    c= input('Enter a number: ')
+
+    if c=='1':
+      n=int(input('dimension: '))
+      if n==1:
+        print(np.zeros(n))
+      else:
+        row=int(input('Enter number of rows: '))
+        col=int(input('Enter number of cols: '))
+        print(np.zeros((row,col)))
+    elif c=='2':
+      n=int(input('dimension: '))
+      if n==1:
+        print(np.ones(n))
+      else:
+        row=int(input('Enter number of rows: '))
+        col=int(input('Enter number of cols: '))
+        print(np.ones((row,col)))
+    elif c=='3':
+      n=int(input('Enter the range:'))
+      print(np.arange(n))
+    elif c=='4':
+      n=int(input('Enter dim:'))
+      if n==1:
+        print(np.eye(n))
+      else:
+        row=int(input('Enter row; '))
+        col=int(input('Enter col: '))
+        print(np.eye(row,col))
+    elif c=='5':
+      print('Rand function used:')
+      n=int(input('Enter number of Elements: '))
+      print(np.random.rand(n))
+      print('Randn function used:')
+      m=int(input('Enter number of element:'))
+      print(np.random.randn(m))
+      print('Randint function of Element:')
+      a=int(input('Enter Lower bound:'))
+      b=int(input('Enter upper bound:'))
+      c=int(input('Enter the number of element'))
+      print(np.random.randint(a,b,c))
+    elif c=='6':
+      print('Give a Matrix:')
+      row=int(input('Row'))
+      col=int(input('col'))
       a=np.zeros((row,col))
       for i in range(row):
-        for j in range(col):
-          a[i][j]=int(input(f'[{i+1},{j+1}]: '))
-      print('Matrix1:\n',a)
-      b=np.zeros((row,col))
-      for i in range(row):
-        for j in range(col):
-          b[i][j]=int(input(f'[{i+1},{j+1}]: '))
-      print('Martix2:\n',b)
-      if c=='1':
-        print(np.add(a,b))
-        break
-      if c=='2':
-        print(np.subtract(a,b))
-        break
-      if c=='3':
-        print(np.divide(a,b))
-        break
-      if c=='4':
-        print(np.mod(a,b))
-        break
-      else:
-        print(np.multiply(a,b))
-        break
-    elif c=='6' or c=='7' or c=='8' or c=='9' or c=='10' or c=='11':
-      row=int(input('Enter rows: '))
-      col = int(input('Enter col: '))
-      d=np.zeros((row,col))
-      for i in range(row):
-        for j in range(col):
-          d[i][j]=int(input(f'[{i+1},{j+1}]: '))
-      print(d)
-      if c=='6':
-        print(np.min(d))
-        break
-      elif c=='7':
-        print(np.max(d))
-        break
-      elif c=='8':
-        print(np.sqrt(d))
-        break
-      elif c=='9':
-        p=int(input('Enter a expo number: '))
-        print(np.power(d,p))
-        break
-      elif c=='10':
-        print('Reciprocal',np.reciprocal(d))
-        break
-      elif c=='11':
-        print('Sin:',np.sin(d))
-        print('Cos:',np.cos(d))
-        break
-      else:
-        pass
+          for j in range(col):
+             a[i][j]=int(input(f'[{i+1},{j+1}]'))
+      print(a)
+      print('Dimension:',a.ndim)
+      print('Type', a.dtype)
+    elif c=='7':
+        row=int(input('Row'))
+        col=int(input('col'))
+        a=np.zeros((row,col))
+        for i in range(row):
+            for j in range(col):
+                a[i][j]=int(input(f'[{i+1},{j+1}]'))
+        print(a)
+        r=int(input('Enter row to be reshaped:'))
+        c=int(input('Enter col to be replaced:'))
+        print(np.reshape(r,c))
+    elif c=='8':
+        row=int(input('Row'))
+        col=int(input('col'))
+        a=np.zeros((row,col))
+        for i in range(row):
+            for j in range(col):
+                a[i][j]=int(input(f'[{i+1},{j+1}]'))
+        print(a)
+        n=int(input('Enter a index to find its value: '))
+        print(a[n])
+        q=int(input('Enter slicing starting number:'))
+        w=int(input('Enter slicing ending number:'))
+        print(a[q:w+1])
+    elif c=='9':
+        row=int(input('Row'))
+        col=int(input('col'))
+        a=np.zeros((row,col))
+        for i in range(row):
+            for j in range(col):
+                a[i][j]=int(input(f'[{i+1},{j+1}]'))
+        print(a)
+        print('unique ',np.unique(a))
+        np.random.shuffle(a)
+        print('shuffled ',a)
     else:
-      break
-simple_cal()
+       print('Thank!! visit again!')
+       break
+    
+other_funtion()
